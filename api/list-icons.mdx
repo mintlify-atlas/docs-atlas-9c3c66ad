@@ -1,6 +1,6 @@
 ---
 title: "GET /api/icons and /api/svgs — List Available Icons"
-sidebarTitle: "GET /api/icons"
+sidebarTitle: "List Icons"
 description: "GET /api/icons returns a JSON array of all supported icon IDs. GET /api/svgs returns a JSON object of raw SVG strings keyed by icon ID."
 ---
 
@@ -74,23 +74,26 @@ Returns `Content-Type: application/json` — a JSON object where each key is an 
 }
 ```
 
-### Example
+### Examples
+
+<CodeGroup>
 
 ```js JavaScript
-const https = require('https');
-
-https.get('https://skillicons.dev/api/svgs', (res) => {
-  let data = '';
-  res.on('data', chunk => data += chunk);
-  res.on('end', () => {
-    const svgs = JSON.parse(data);
+fetch('https://skillicons.dev/api/svgs')
+  .then(res => res.json())
+  .then(svgs => {
     console.log(`Loaded ${Object.keys(svgs).length} SVG icons`);
-    // Access a specific icon
+    // Access a specific icon's raw SVG string
     const jsIcon = svgs['js'];
     console.log('JS icon SVG:', jsIcon.substring(0, 80) + '...');
   });
-});
 ```
+
+```bash cURL
+curl https://skillicons.dev/api/svgs
+```
+
+</CodeGroup>
 
 <Tip>
   Use `/api/svgs` when you need to inline SVGs into a page or perform custom rendering without loading them as external images. Inlined SVGs can be styled with CSS and are not subject to browser mixed-content restrictions.

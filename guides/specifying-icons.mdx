@@ -1,7 +1,7 @@
 ---
-title: "Specifying Icons in Your Skill Icons Request"
+title: "Specifying Icons for the Skill Icons SVG Generator API"
 sidebarTitle: "Specifying Icons"
-description: "Learn how to select and combine technology icons using the i parameter — comma-separated IDs, shorthand aliases, and the special all keyword."
+description: "Learn how to select technology icons using the i parameter — comma-separated IDs, the all keyword, case-insensitivity, and how unknown IDs are handled."
 ---
 
 The `i` parameter is the core of every Skill Icons request. It tells the API which technology icons to include in the generated SVG grid — without it, there is nothing to render. Every other parameter (`theme`, `perline`) is optional; `i` is not.
@@ -10,13 +10,13 @@ The `i` parameter is the core of every Skill Icons request. It tells the API whi
 
 Pass a comma-separated list of icon IDs to the `i` query parameter to specify which icons you want:
 
-```
+```bash
 https://skillicons.dev/icons?i=js,html,css
 ```
 
 The full parameter name `icons` is also accepted as an alias and behaves identically:
 
-```
+```bash
 https://skillicons.dev/icons?icons=js,html,css
 ```
 
@@ -24,7 +24,7 @@ https://skillicons.dev/icons?icons=js,html,css
 
 Use the special keyword `all` to request every icon available in the catalog in a single request:
 
-```
+```bash
 https://skillicons.dev/icons?i=all
 ```
 

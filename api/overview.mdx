@@ -1,7 +1,7 @@
 ---
-title: "Skill Icons API — Overview and Base URL"
+title: "Skill Icons API — Overview, Base URL, and Endpoints"
 sidebarTitle: "Overview"
-description: "The Skill Icons REST API is open and requires no authentication. Base URL is https://skillicons.dev. Three endpoints cover icon generation, ID listing, and SVG data."
+description: "Skill Icons API overview. No auth required. Base URL: https://skillicons.dev. Three endpoints: SVG grid generation, icon ID listing, and raw SVG retrieval."
 ---
 
 The Skill Icons API is a lightweight HTTP API running on Cloudflare Workers. It requires no API key, no OAuth, and no headers — just form the URL and embed it anywhere you can render an image or make an HTTP request.
@@ -43,7 +43,7 @@ Rate limits are not officially documented. Normal embed usage — for example, i
   <Card title="GET /api/icons" icon="list" href="/api/list-icons">
     Returns a JSON array of every supported icon ID. Use this to validate user input or populate a picker UI.
   </Card>
-  <Card title="GET /api/svgs" icon="code" href="/api/list-icons#get-apisvgs">
+  <Card title="GET /api/svgs" icon="code" href="/api/list-icons">
     Returns a JSON object of raw SVG strings keyed by icon ID. Ideal for inlining SVGs or performing custom rendering without external image requests.
   </Card>
 </CardGroup>

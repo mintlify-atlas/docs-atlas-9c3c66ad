@@ -1,7 +1,7 @@
 ---
-title: "Dark and Light Themes for Skill Icons"
+title: "Choosing Dark or Light Themes in Skill Icons Requests"
 sidebarTitle: "Themes"
-description: "Switch between dark and light icon backgrounds using the theme parameter. Dark is the default; light gives icons a white background for light-mode profiles."
+description: "Switch between dark and light icon backgrounds using the theme parameter. Dark is the default; light suits light-mode profiles and portfolios."
 ---
 
 Some icons in the Skill Icons catalog include themed background variants — a darker fill for dark-mode surfaces and a lighter fill for light-mode surfaces. The `theme` parameter lets you choose which variant the API returns so your icon grid always looks at home in its surrounding context, whether that's a dark GitHub profile, a light personal portfolio, or anything in between.
@@ -17,7 +17,7 @@ The `theme` parameter (alias `t`) accepts two values:
 
 Because `dark` is the default, you only need to include the parameter explicitly when switching to `light`.
 
-```
+```bash
 # Dark theme (default — parameter is optional)
 https://skillicons.dev/icons?i=java,kotlin,nodejs,figma
 
@@ -27,7 +27,7 @@ https://skillicons.dev/icons?i=java,kotlin,nodejs,figma&theme=light
 
 The short alias `t` works identically:
 
-```
+```bash
 https://skillicons.dev/icons?i=java,kotlin,nodejs,figma&t=light
 ```
 

@@ -1,7 +1,7 @@
 ---
-title: "Controlling Icon Grid Layout with perline"
+title: "Controlling Icon Grid Layout with the perline Parameter"
 sidebarTitle: "Layout"
-description: "Use the perline parameter to set how many icons appear on each row — accepts any integer from 1 to 50, defaulting to 15."
+description: "Use the perline parameter to control how many icons appear per row in the SVG grid — accepts integers from 1 to 50, with a default of 15."
 ---
 
 By default, the Skill Icons API places **15 icons per row** in the generated SVG grid. That works well for most use cases, but you might want fewer icons per row on a narrow README section, more icons per row in a compact catalog, or even a single column of icons for a vertical list. The `perline` parameter gives you direct control over the row width.
@@ -10,7 +10,7 @@ By default, the Skill Icons API places **15 icons per row** in the generated SVG
 
 `perline` accepts any **integer between 1 and 50**, inclusive. The default value is `15`.
 
-```
+```bash
 https://skillicons.dev/icons?i=aws,gcp,azure,react,vue,flutter&perline=3
 ```
 
@@ -54,7 +54,7 @@ https://skillicons.dev/icons?i=aws,gcp,azure,react,vue,flutter&perline=3
 
 `perline` composes naturally with `i` and `theme`. Combine all three to get exactly the grid you want:
 
-```
+```bash
 # 5-wide dark grid
 https://skillicons.dev/icons?i=js,ts,react,nodejs,docker,python,rust,go,java,kotlin&perline=5
 
