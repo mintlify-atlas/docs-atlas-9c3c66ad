@@ -1,0 +1,70 @@
+---
+title: "GET /icons — Generate a Skill Icons SVG Grid"
+sidebarTitle: "GET /icons"
+description: "GET /icons generates an SVG image grid from comma-separated icon IDs. Supports dark/light themes and configurable icons-per-row layout via query parameters."
+---
+
+`GET /icons` is the core Skill Icons endpoint. It accepts a list of icon IDs and returns a rendered SVG grid you can embed directly as an image URL — in a Markdown file, an HTML page, or anywhere that renders images from a URL.
+
+## Method & URL
+
+```
+GET https://skillicons.dev/icons
+```
+
+## Parameters
+
+<ParamField query="i" type="string" required>
+  Comma-separated list of icon IDs (e.g. `js,python,react`) or `all` to include every available icon. Alias: `icons`.
+</ParamField>
+
+<ParamField query="theme" type="string">
+  Background theme for the icon grid. Accepts `dark` (default) or `light`. Alias: `t`.
+</ParamField>
+
+<ParamField query="perline" type="integer">
+  Number of icons per row. Accepts integers from `1` to `50`. Defaults to `15`.
+</ParamField>
+
+## Response
+
+Returns `Content-Type: image/svg+xml` — an SVG document containing the fully rendered icon grid. The SVG can be embedded directly as the `src` of an `<img>` tag, used in a Markdown image reference, or saved to disk.
+
+## Examples
+
+<CodeGroup>
+
+```md Markdown
+[![My Skills](https://skillicons.dev/icons?i=js,ts,react,nodejs,docker)](https://skillicons.dev)
+```
+
+```html HTML
+<img src="https://skillicons.dev/icons?i=js,ts,react,nodejs,docker" alt="My Skills" />
+```
+
+```bash cURL
+# Save SVG to file
+curl "https://skillicons.dev/icons?i=typescript,react,nodejs,docker&perline=4" -o skills.svg
+
+# Light theme
+curl "https://skillicons.dev/icons?i=python,django,postgres&theme=light" -o skills-light.svg
+```
+
+```js JavaScript
+const skills = ['js', 'ts', 'react', 'nodejs', 'docker'];
+const url = `https://skillicons.dev/icons?i=${skills.join(',')}&perline=5`;
+const img = document.createElement('img');
+img.src = url;
+img.alt = 'My Skills';
+document.body.appendChild(img);
+```
+
+</CodeGroup>
+
+## Error Handling
+
+Unknown icon IDs are silently skipped — no error is thrown and the response remains a valid SVG containing only the recognised icons. Passing an empty value for `?i=` returns an empty SVG document.
+
+<Note>
+  The `all` shorthand value for `i` returns every available icon in a single grid. Combine it with `perline` to control how many icons appear on each row — for example, `?i=all&perline=20` lays out all icons in rows of 20.
+</Note>

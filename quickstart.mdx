@@ -1,47 +1,110 @@
 ---
-title: "Quickstart"
-description: "Begin with a guide on the fastest path to a successful outcome"
+title: "Get Started with Skill Icons"
+sidebarTitle: "Quickstart"
+description: "Embed a Skill Icons SVG grid in your GitHub README or web page in under two minutes — no account or API key needed."
 ---
 
-Describe how someone begins using your product. What is the first thing they need to do? Are there any prerequisites?
-
-A quickstart should take someone from zero to using your product. They'll get a quick win and a sense of what they can accomplish.
-
-## Prerequisites
-
-Before you begin, you must have:
-
-- Requirement one (for example, Node.js 18+, a free account, an API key)
-- Requirement two (for example, a compatible device, a compatible browser, a compatible operating system)
-
-## Get started
+By the end of this guide you will have a live, rendered icon grid displaying your tech stack — embedded in a GitHub README or an HTML page. All you need is a text editor and the icons you want to show.
 
 <Steps>
-  <Step title="Install">
-    Describe how to install your product or sign up.
+  <Step title="Pick Your Icons">
+    Browse the full icon catalogue to find the short IDs for the technologies you want to display. Each icon has a lowercase ID such as `js`, `react`, or `docker`.
 
-    ```bash
-    npm install your-package
-    ```
+    <Card title="Browse the Icon List" icon="grid-2" href="/icons/list">
+      Search and filter all 200+ available icons and copy their IDs.
+    </Card>
+
+    Jot down the IDs for every icon you want — you will combine them into a comma-separated list in the next step.
   </Step>
-  <Step title="Configure">
-    Describe any setup or configuration needed before first use.
 
-    ```bash
-    your-cli init
+  <Step title="Build the URL">
+    Construct your request URL using the pattern below, substituting your chosen icon IDs and any optional parameters:
+
     ```
-  </Step>
-  <Step title="Run it">
-    Show the first thing a user does to see it working.
+    https://skillicons.dev/icons?i={icon-ids}&theme={dark|light}&perline={n}
+    ```
 
-    ```bash
-    your-cli start
+    | Parameter | Required | Description |
+    |---|---|---|
+    | `i` | ✅ Yes | Comma-separated icon IDs |
+    | `theme` | No | `dark` (default) or `light` |
+    | `perline` | No | Icons per row, 1–50 (default `15`) |
+
+    A minimal working example:
+
+    ```
+    https://skillicons.dev/icons?i=js,ts,react,nodejs,docker
+    ```
+
+    Paste that URL directly into a browser tab to preview the SVG before embedding it.
+  </Step>
+
+  <Step title="Embed in Markdown">
+    Use standard Markdown image syntax to embed the grid in a GitHub README or any Markdown document. Wrapping it in a link is recommended (see the tip below):
+
+    ```md
+    [![My Skills](https://skillicons.dev/icons?i=js,ts,react,nodejs,docker)](https://skillicons.dev)
+    ```
+
+    Commit and push the change — GitHub will render the SVG inline in your README automatically.
+  </Step>
+
+  <Step title="Embed in HTML">
+    For HTML pages, use an `<img>` tag. Wrapping it in a centered paragraph is a common pattern for README profiles and personal sites:
+
+    ```html
+    <p align="center">
+      <a href="https://skillicons.dev">
+        <img src="https://skillicons.dev/icons?i=js,ts,react,nodejs,docker" />
+      </a>
+    </p>
+    ```
+
+    The SVG scales cleanly at any size, so no `width` or `height` attribute is required unless you want to constrain the dimensions explicitly.
+  </Step>
+
+  <Step title="Customize">
+    Adjust the theme and layout to match your README's style.
+
+    **Light theme** — ideal for READMEs viewed in GitHub's default light mode:
+
+    ```md
+    ![My Skills](https://skillicons.dev/icons?i=java,kotlin,nodejs,figma&theme=light)
+    ```
+
+    **Custom grid width with `perline`** — set icons per row to create a tighter, more compact layout:
+
+    ```md
+    ![My Skills](https://skillicons.dev/icons?i=aws,gcp,azure,react,vue,flutter&perline=3)
+    ```
+
+    Combine both parameters to get exactly the grid shape and color scheme you want:
+
+    ```md
+    ![My Skills](https://skillicons.dev/icons?i=aws,gcp,azure,react,vue,flutter&theme=light&perline=3)
     ```
   </Step>
 </Steps>
 
 <Tip>
-  Give people a way to get help. This could be a link to a support page, a chat with a customer support agent, or a forum for your product.
-
-  Example: Need help? Reach out to us at [support@yourcompany.com](mailto:support@yourcompany.com).
+  Wrap your `<img>` tag in `<a href="https://skillicons.dev">` (or use the linked Markdown syntax `[![...](image-url)](https://skillicons.dev)`) as a small courtesy to the project. It helps others discover Skill Icons when they click on the grid in your README.
 </Tip>
+
+## What's Next
+
+<CardGroup cols={2}>
+  <Card
+    title="Specifying Icons"
+    icon="list-check"
+    href="/guides/specifying-icons"
+  >
+    Learn how to find icon IDs, handle aliases, and use the `i=all` shorthand.
+  </Card>
+  <Card
+    title="API Overview"
+    icon="code"
+    href="/api/overview"
+  >
+    Explore all endpoints, parameters, and response formats in the full API reference.
+  </Card>
+</CardGroup>

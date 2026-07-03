@@ -1,0 +1,102 @@
+---
+title: "Embedding Skill Icons in READMEs and Web Apps"
+sidebarTitle: "Embedding"
+description: "Embed Skill Icons in GitHub READMEs, static HTML sites, React components, and personal portfolio pages using Markdown, HTML, or JavaScript."
+---
+
+Skill Icons is just an image URL — the API returns a self-contained SVG, and SVGs are valid wherever images are valid. That means you can drop the URL directly into a Markdown file, an `<img>` tag, a React component, a Vue template, or any other environment that can render an image. No authentication, no SDK, no build step required.
+
+## Embedding by Environment
+
+<Tabs>
+  <Tab title="GitHub README">
+    The simplest approach for a GitHub README is a plain Markdown image link. Wrap it in a link tag to make the grid clickable:
+
+    ```md
+    ## 🛠️ My Skills
+    [![My Skills](https://skillicons.dev/icons?i=js,ts,react,nodejs,docker)](https://skillicons.dev)
+    ```
+
+    To center the icons in your README (GitHub Markdown strips CSS, so you need HTML):
+
+    ```html
+    <p align="center">
+      <a href="https://skillicons.dev">
+        <img src="https://skillicons.dev/icons?i=js,ts,react,nodejs,docker" />
+      </a>
+    </p>
+    ```
+
+    See the [Centering guide](/guides/centering) for a full explanation of why the HTML approach is required.
+  </Tab>
+  <Tab title="HTML">
+    On a standard HTML page you have full access to CSS, so centering and sizing are straightforward:
+
+    ```html
+    <section class="skills">
+      <h2>Technical Skills</h2>
+      <img
+        src="https://skillicons.dev/icons?i=js,ts,react,nodejs,docker&theme=light"
+        alt="My tech stack"
+      />
+    </section>
+    ```
+
+    Swap `theme=light` for `theme=dark` (or omit it entirely) to match your page's color scheme. See the [Themes guide](/guides/themes) for details.
+  </Tab>
+  <Tab title="React">
+    Build the icon URL dynamically from an array of skill IDs. This keeps your skill list easy to update and co-located with your component logic:
+
+    ```jsx
+    function SkillsSection() {
+      const skills = ['js', 'ts', 'react', 'nodejs', 'docker'];
+      const iconUrl = `https://skillicons.dev/icons?i=${skills.join(',')}&perline=5`;
+
+      return (
+        <section>
+          <h2>My Skills</h2>
+          <img src={iconUrl} alt="Tech stack" />
+        </section>
+      );
+    }
+    ```
+
+    Because the URL is just a string, you can derive it from props, a CMS, or any other data source without any additional dependencies.
+  </Tab>
+  <Tab title="Vue">
+    The same dynamic URL pattern works cleanly in a Vue 3 `<script setup>` component:
+
+    ```vue
+    <template>
+      <section>
+        <h2>My Skills</h2>
+        <img :src="iconUrl" alt="Tech stack" />
+      </section>
+    </template>
+
+    <script setup>
+    const skills = ['js', 'ts', 'vue', 'nodejs', 'docker'];
+    const iconUrl = `https://skillicons.dev/icons?i=${skills.join(',')}&perline=5`;
+    </script>
+    ```
+
+    Swap the `skills` array for a `defineProps` value or a Pinia store state if you want the icon list to be driven by external data.
+  </Tab>
+</Tabs>
+
+## Validating Icon IDs at Runtime
+
+<Tip>
+  Before building your icon URL in a dynamic application, consider validating the icon IDs you intend to use. Query the `/api/icons` endpoint to retrieve the list of all valid icon IDs, then filter your skill list against it. This prevents silently skipped icons caused by typos or outdated IDs — the API drops unrecognized IDs without returning an error.
+</Tip>
+
+## API Reference
+
+<CardGroup cols={2}>
+  <Card title="Get Icons" icon="image" href="/api/get-icons">
+    Full reference for the `GET /icons` endpoint — parameters, defaults, and response format.
+  </Card>
+  <Card title="List Icons" icon="list" href="/api/list-icons">
+    Retrieve the complete catalog of valid icon IDs you can pass to the `i` parameter.
+  </Card>
+</CardGroup>

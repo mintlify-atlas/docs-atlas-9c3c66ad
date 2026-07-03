@@ -1,0 +1,49 @@
+---
+title: "Skill Icons API — Overview and Base URL"
+sidebarTitle: "Overview"
+description: "The Skill Icons REST API is open and requires no authentication. Base URL is https://skillicons.dev. Three endpoints cover icon generation, ID listing, and SVG data."
+---
+
+The Skill Icons API is a lightweight HTTP API running on Cloudflare Workers. It requires no API key, no OAuth, and no headers — just form the URL and embed it anywhere you can render an image or make an HTTP request.
+
+## Base URL
+
+```
+https://skillicons.dev
+```
+
+## Authentication
+
+**No authentication required.** All endpoints are publicly accessible without any credentials, tokens, or headers.
+
+## Response Formats
+
+| Endpoint | Method | Returns | Purpose |
+|---|---|---|---|
+| `/icons` | GET | SVG | Generate an icon grid image |
+| `/api/icons` | GET | JSON array | List all available icon IDs |
+| `/api/svgs` | GET | JSON object | Fetch raw SVG content for all icons |
+
+The image generation endpoint (`/icons`) returns `Content-Type: image/svg+xml` and can be embedded directly as an `<img>` `src` or a Markdown image URL. The two API endpoints (`/api/icons` and `/api/svgs`) return `Content-Type: application/json` and are intended for programmatic use.
+
+## Rate Limits
+
+Rate limits are not officially documented. Normal embed usage — for example, including an icon grid in a GitHub `README.md` or a personal portfolio — is free and unlimited. Avoid programmatic bulk scraping or issuing high-frequency automated requests to the service.
+
+<Tip>
+  For production web apps that dynamically build icon URLs, cache the `/api/icons` response to avoid fetching it on every render. The set of supported icon IDs changes only when new icons are added in a release.
+</Tip>
+
+## Endpoints
+
+<CardGroup cols={3}>
+  <Card title="GET /icons" icon="image" href="/api/get-icons">
+    Generate a rendered SVG grid from a comma-separated list of icon IDs. Supports dark and light themes and a configurable icons-per-row layout.
+  </Card>
+  <Card title="GET /api/icons" icon="list" href="/api/list-icons">
+    Returns a JSON array of every supported icon ID. Use this to validate user input or populate a picker UI.
+  </Card>
+  <Card title="GET /api/svgs" icon="code" href="/api/list-icons#get-apisvgs">
+    Returns a JSON object of raw SVG strings keyed by icon ID. Ideal for inlining SVGs or performing custom rendering without external image requests.
+  </Card>
+</CardGroup>

@@ -1,0 +1,56 @@
+---
+title: "Dark and Light Themes for Skill Icons"
+sidebarTitle: "Themes"
+description: "Switch between dark and light icon backgrounds using the theme parameter. Dark is the default; light gives icons a white background for light-mode profiles."
+---
+
+Some icons in the Skill Icons catalog include themed background variants — a darker fill for dark-mode surfaces and a lighter fill for light-mode surfaces. The `theme` parameter lets you choose which variant the API returns so your icon grid always looks at home in its surrounding context, whether that's a dark GitHub profile, a light personal portfolio, or anything in between.
+
+## The `theme` Parameter
+
+The `theme` parameter (alias `t`) accepts two values:
+
+| Value | Description |
+|---|---|
+| `dark` | Black/dark background behind icons — the **default** |
+| `light` | White background — suited for light-mode surfaces |
+
+Because `dark` is the default, you only need to include the parameter explicitly when switching to `light`.
+
+```
+# Dark theme (default — parameter is optional)
+https://skillicons.dev/icons?i=java,kotlin,nodejs,figma
+
+# Light theme (explicit)
+https://skillicons.dev/icons?i=java,kotlin,nodejs,figma&theme=light
+```
+
+The short alias `t` works identically:
+
+```
+https://skillicons.dev/icons?i=java,kotlin,nodejs,figma&t=light
+```
+
+## Side-by-Side Examples
+
+<CodeGroup>
+
+```md Dark Theme
+[![My Skills](https://skillicons.dev/icons?i=java,kotlin,nodejs,figma)](https://skillicons.dev)
+```
+
+```md Light Theme
+[![My Skills](https://skillicons.dev/icons?i=java,kotlin,nodejs,figma&theme=light)](https://skillicons.dev)
+```
+
+</CodeGroup>
+
+## Matching Your Profile's Color Mode
+
+<Tip>
+  Check your GitHub profile's color mode setting before picking a theme. If your profile uses GitHub's default light mode, `theme=light` will keep the icon backgrounds consistent with the page. If you've switched to dark mode — or if you're placing the icons on a dark-background section — omit the parameter and let it default to `dark`.
+</Tip>
+
+## Icons Without Themed Variants
+
+Not every icon in the catalog has a distinct light and dark variant. For icons that don't carry a theme-specific background, both `dark` and `light` will produce an identical result — the icon renders exactly the same regardless of which value you pass. Only icons that were explicitly designed with background theming will visually differ between the two modes.

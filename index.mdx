@@ -1,20 +1,65 @@
 ---
-title: "Introduction"
-description: "Welcome to your project"
+title: "Skill Icons: Dynamic SVG Icon Grids for Developers"
+sidebarTitle: "Home"
+description: "Skill Icons generates beautiful SVG grids of 200+ technology icons. Embed them in GitHub READMEs, resumes, and web apps with a single URL."
 ---
 
-Write a short description of your product here. What it does, who it's for, and what they can accomplish with it.
+Skill Icons is a free, hosted API that turns a comma-separated list of technology names into a polished SVG icon grid — no sign-up, no API key, no dependencies. Drop a single image URL into any Markdown file or HTML page and your tech stack renders instantly.
 
-<Tip>
-  Ready to make this your own? Start by editing this page. Update your `docs.json` file to customize your site. Then fill out the [Quickstart](/quickstart) page.
-</Tip>
+<CardGroup cols={2}>
+  <Card title="Introduction" icon="book-open" href="/introduction">
+    Learn what Skill Icons is and how it works under the hood.
+  </Card>
+  <Card title="Quickstart" icon="rocket" href="/quickstart">
+    Embed your first icon grid in under two minutes.
+  </Card>
+  <Card title="Usage Guides" icon="map" href="/guides/specifying-icons">
+    Master themes, layouts, and centering for pixel-perfect results.
+  </Card>
+  <Card title="API Reference" icon="code" href="/api/overview">
+    Full parameter reference for every endpoint.
+  </Card>
+</CardGroup>
 
-<Card title="Quickstart" icon="rocket" href="/quickstart">
-  This card links to the quickstart page in your project.
-</Card>
-<Card title="Components" icon="puzzle-piece" href="https://mintlify.com/docs/components">
-  Add cards, callouts, steps, tabs, and more to design and structure your pages.
-</Card>
-<Card title="Settings" icon="gear" href="https://mintlify.com/docs/organize/settings">
-  Set your site name, branding, and navigation in the `docs.json` file.
-</Card>
+## Get your icons in 3 steps
+
+<Steps>
+  <Step title="Choose your icons">
+    Pick the technology IDs you want to display from the [full icons list](/icons/list). Each icon has a short ID like `js`, `react`, `docker`, or `kubernetes`.
+  </Step>
+  <Step title="Build your URL">
+    Combine the base URL with your comma-separated icon IDs:
+    ```
+    https://skillicons.dev/icons?i=js,ts,react,nodejs,docker
+    ```
+  </Step>
+  <Step title="Embed it">
+    Paste the URL as a Markdown image or an HTML `<img>` tag — it works anywhere SVG images are rendered.
+    ```md
+    ![My Skills](https://skillicons.dev/icons?i=js,ts,react,nodejs,docker)
+    ```
+  </Step>
+</Steps>
+
+## Why Skill Icons?
+
+<CardGroup cols={3}>
+  <Card title="200+ Icons" icon="icons">
+    Covers languages, frameworks, databases, DevOps tools, editors, and cloud platforms.
+  </Card>
+  <Card title="Zero Setup" icon="bolt">
+    No account, no API key. Just a URL. Works in GitHub READMEs, HTML, and any Markdown renderer.
+  </Card>
+  <Card title="Light & Dark Themes" icon="moon">
+    Every icon ships in dark (default) and light variants — pick what matches your profile or site.
+  </Card>
+  <Card title="Flexible Layout" icon="table-cells">
+    Control how many icons appear per row with the `perline` parameter (1–50).
+  </Card>
+  <Card title="Global CDN" icon="globe">
+    Powered by Cloudflare Workers — served from the edge, milliseconds from anywhere.
+  </Card>
+  <Card title="Always Free" icon="heart">
+    Open-source and free to use. No rate limits for normal usage.
+  </Card>
+</CardGroup>

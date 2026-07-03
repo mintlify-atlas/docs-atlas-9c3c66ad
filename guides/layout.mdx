@@ -1,0 +1,65 @@
+---
+title: "Controlling Icon Grid Layout with perline"
+sidebarTitle: "Layout"
+description: "Use the perline parameter to set how many icons appear on each row — accepts any integer from 1 to 50, defaulting to 15."
+---
+
+By default, the Skill Icons API places **15 icons per row** in the generated SVG grid. That works well for most use cases, but you might want fewer icons per row on a narrow README section, more icons per row in a compact catalog, or even a single column of icons for a vertical list. The `perline` parameter gives you direct control over the row width.
+
+## The `perline` Parameter
+
+`perline` accepts any **integer between 1 and 50**, inclusive. The default value is `15`.
+
+```
+https://skillicons.dev/icons?i=aws,gcp,azure,react,vue,flutter&perline=3
+```
+
+| Value | Effect |
+|---|---|
+| `1` | One icon per row — a vertical list |
+| `3` | Three icons per row — compact groups |
+| `6` | Six icons per row — balanced grid |
+| `15` | Fifteen icons per row — **default** |
+| `50` | Up to fifty icons per row — maximum |
+
+## Examples
+
+<CodeGroup>
+
+```md 3 Per Row
+[![My Skills](https://skillicons.dev/icons?i=aws,gcp,azure,react,vue,flutter&perline=3)](https://skillicons.dev)
+```
+
+```md 6 Per Row
+[![My Skills](https://skillicons.dev/icons?i=aws,gcp,azure,react,vue,flutter&perline=6)](https://skillicons.dev)
+```
+
+```md 1 Per Row (Vertical List)
+[![My Skills](https://skillicons.dev/icons?i=js,ts,react&perline=1)](https://skillicons.dev)
+```
+
+</CodeGroup>
+
+## Tips for Choosing a `perline` Value
+
+<Tip>
+  Use a lower `perline` value on mobile-first pages to keep icons readable at small viewport sizes. A value of `4` or `5` often strikes the right balance between density and legibility on narrow screens.
+</Tip>
+
+<Tip>
+  When requesting the full icon catalog with `?i=all`, set `perline=15` or higher to keep the grid compact and avoid generating an extremely tall SVG. The default of `15` is a reasonable starting point for full catalog renders.
+</Tip>
+
+## Combining `perline` with Other Parameters
+
+`perline` composes naturally with `i` and `theme`. Combine all three to get exactly the grid you want:
+
+```
+# 5-wide dark grid
+https://skillicons.dev/icons?i=js,ts,react,nodejs,docker,python,rust,go,java,kotlin&perline=5
+
+# 4-wide light grid
+https://skillicons.dev/icons?i=figma,xd,ps,ai,sketch,blender&perline=4&theme=light
+```
+
+For instructions on centering the resulting SVG inside a README or web page, see the [Centering guide](/guides/centering).

@@ -1,0 +1,69 @@
+{
+  "projectType": "api-service",
+  "projectName": "Skill Icons",
+  "projectDescription": "A Cloudflare Workers-powered API that generates dynamic SVG grids of technology skill icons for use in GitHub READMEs, resumes, and web applications.",
+  "theme": "luma",
+  "primaryColor": "#04abb9",
+  "lightColor": "#725be9",
+  "darkColor": null,
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Documentation",
+        "groups": [
+          {
+            "group": "Get Started",
+            "pages": [
+              "introduction",
+              "quickstart"
+            ]
+          },
+          {
+            "group": "Usage Guides",
+            "pages": [
+              "guides/specifying-icons",
+              "guides/themes",
+              "guides/layout",
+              "guides/centering",
+              "guides/embedding"
+            ]
+          },
+          {
+            "group": "Icons Reference",
+            "pages": [
+              "icons/overview",
+              "icons/list"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "API Reference",
+        "groups": [
+          {
+            "group": "Endpoints",
+            "pages": [
+              "api/overview",
+              "api/get-icons",
+              "api/list-icons"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "keyFeatures": [
+    "Dynamic SVG icon grid generation via simple URL parameters",
+    "200+ technology and tool icons supported",
+    "Dark and light theme variants for every icon",
+    "Configurable icons-per-line layout (1–50)",
+    "Powered by Cloudflare Workers for global low-latency delivery",
+    "Zero dependencies — embed with a single img tag or Markdown image",
+    "REST API for listing available icons and fetching raw SVG data"
+  ],
+  "publicApiSurface": [
+    "GET /icons?i={icon-ids}&theme={dark|light}&perline={n}",
+    "GET /api/icons — returns JSON array of all icon IDs",
+    "GET /api/svgs — returns JSON object of raw SVG content keyed by icon ID"
+  ]
+}

@@ -1,0 +1,67 @@
+---
+title: "Centering Skill Icons in Markdown and HTML"
+sidebarTitle: "Centering"
+description: "Center Skill Icons SVGs in GitHub READMEs using HTML alignment attributes — SVGs auto-resize, so standard image centering techniques work out of the box."
+---
+
+GitHub Flavored Markdown intentionally strips most inline CSS and `<style>` blocks for security reasons, which means `text-align: center` and similar CSS properties have no effect in `.md` files. However, GitHub **does** allow a small set of HTML attributes — including the `align` attribute on block-level elements — which makes it possible to center images without any CSS at all. Skill Icons SVGs auto-resize to fill their container, so once you center the container, the icons follow.
+
+## Centering in a GitHub README
+
+Use a `<p>` tag with `align="center"` wrapped around your image link. This is the most widely supported centering technique for GitHub Markdown:
+
+```html
+<p align="center">
+  <a href="https://skillicons.dev">
+    <img src="https://skillicons.dev/icons?i=git,kubernetes,docker,c,vim" />
+  </a>
+</p>
+```
+
+The outer `<a>` tag is optional — it makes the icon grid a clickable link, which is a common README convention. You can omit it if you don't need the link behavior:
+
+```html
+<p align="center">
+  <img src="https://skillicons.dev/icons?i=git,kubernetes,docker,c,vim" />
+</p>
+```
+
+## Centering in Web Pages and HTML Files
+
+On regular web pages, you have full access to CSS. Any standard centering approach works — `text-align`, flexbox, or grid. The simplest option:
+
+```html
+<div style="text-align: center;">
+  <img src="https://skillicons.dev/icons?i=git,kubernetes,docker,c,vim" />
+</div>
+```
+
+Or using flexbox for more control:
+
+```html
+<div style="display: flex; justify-content: center;">
+  <img src="https://skillicons.dev/icons?i=git,kubernetes,docker,c,vim" />
+</div>
+```
+
+## Pure Markdown Cannot Be Centered
+
+<Note>
+  The standard Markdown image syntax — `![Alt text](url)` — produces an `<img>` tag with no alignment attributes. GitHub renders it left-aligned and provides no Markdown-native way to change that. To center icons in a GitHub README, you must use the HTML `<p align="center">` snippet shown above. Pure Markdown image syntax is fine when centering isn't needed.
+</Note>
+
+## Combining Centering with Layout Control
+
+<Tip>
+  Pair `align="center"` with the `perline` parameter for a fully responsive layout. Setting a smaller `perline` value (e.g. `perline=6`) and centering the result keeps the icon grid visually balanced regardless of how wide the viewer's screen is. See the [Layout guide](/guides/layout) for `perline` details.
+</Tip>
+
+A complete example with both centering and layout control:
+
+```html
+<p align="center">
+  <a href="https://skillicons.dev">
+    <img src="https://skillicons.dev/icons?i=js,ts,react,nodejs,docker,python,rust,go&perline=4" />
+  </a>
+</p>
+```

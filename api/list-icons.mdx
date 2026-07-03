@@ -1,0 +1,101 @@
+---
+title: "GET /api/icons and /api/svgs — List Available Icons"
+sidebarTitle: "GET /api/icons"
+description: "GET /api/icons returns a JSON array of all supported icon IDs. GET /api/svgs returns a JSON object of raw SVG strings keyed by icon ID."
+---
+
+Two utility endpoints let you fetch the live catalog of supported icons — either as a list of IDs or as raw SVG content. Use them to validate user input, populate a skill picker UI, or inline SVGs directly into your pages.
+
+## GET /api/icons
+
+### Method & URL
+
+```
+GET https://skillicons.dev/api/icons
+```
+
+### Parameters
+
+None. The endpoint takes no query parameters and returns data for every available icon.
+
+### Response
+
+Returns `Content-Type: application/json` — a JSON array of icon ID strings, one entry per supported icon.
+
+```json Example Response
+["ableton", "activitypub", "actix", "adonis", "ae", "aiscript", "alpinejs", "anaconda", "angular", "ansible", "..."]
+```
+
+### Examples
+
+<CodeGroup>
+
+```js JavaScript
+fetch('https://skillicons.dev/api/icons')
+  .then(res => res.json())
+  .then(icons => {
+    console.log(`${icons.length} icons available`);
+    // Validate a user's skill selection
+    const mySkills = ['js', 'react', 'docker'];
+    const valid = mySkills.filter(s => icons.includes(s));
+    console.log('Valid skills:', valid);
+  });
+```
+
+```bash cURL
+curl https://skillicons.dev/api/icons
+```
+
+</CodeGroup>
+
+---
+
+## GET /api/svgs
+
+### Method & URL
+
+```
+GET https://skillicons.dev/api/svgs
+```
+
+### Parameters
+
+None. The endpoint takes no query parameters and returns data for every available icon.
+
+### Response
+
+Returns `Content-Type: application/json` — a JSON object where each key is an icon ID and each value is the full raw SVG string for that icon.
+
+```json Example Response Structure
+{
+  "js": "<svg xmlns=\"http://www.w3.org/2000/svg\" ...>...</svg>",
+  "react": "<svg xmlns=\"http://www.w3.org/2000/svg\" ...>...</svg>",
+  "docker": "<svg xmlns=\"http://www.w3.org/2000/svg\" ...>...</svg>"
+}
+```
+
+### Example
+
+```js JavaScript
+const https = require('https');
+
+https.get('https://skillicons.dev/api/svgs', (res) => {
+  let data = '';
+  res.on('data', chunk => data += chunk);
+  res.on('end', () => {
+    const svgs = JSON.parse(data);
+    console.log(`Loaded ${Object.keys(svgs).length} SVG icons`);
+    // Access a specific icon
+    const jsIcon = svgs['js'];
+    console.log('JS icon SVG:', jsIcon.substring(0, 80) + '...');
+  });
+});
+```
+
+<Tip>
+  Use `/api/svgs` when you need to inline SVGs into a page or perform custom rendering without loading them as external images. Inlined SVGs can be styled with CSS and are not subject to browser mixed-content restrictions.
+</Tip>
+
+<Note>
+  Both endpoints return data for **all** icons — there is no filtering by category or ID. Parse the response client-side to find what you need.
+</Note>

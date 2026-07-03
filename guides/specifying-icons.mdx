@@ -1,0 +1,86 @@
+---
+title: "Specifying Icons in Your Skill Icons Request"
+sidebarTitle: "Specifying Icons"
+description: "Learn how to select and combine technology icons using the i parameter — comma-separated IDs, shorthand aliases, and the special all keyword."
+---
+
+The `i` parameter is the core of every Skill Icons request. It tells the API which technology icons to include in the generated SVG grid — without it, there is nothing to render. Every other parameter (`theme`, `perline`) is optional; `i` is not.
+
+## The `i` Parameter
+
+Pass a comma-separated list of icon IDs to the `i` query parameter to specify which icons you want:
+
+```
+https://skillicons.dev/icons?i=js,html,css
+```
+
+The full parameter name `icons` is also accepted as an alias and behaves identically:
+
+```
+https://skillicons.dev/icons?icons=js,html,css
+```
+
+### Requesting Every Icon
+
+Use the special keyword `all` to request every icon available in the catalog in a single request:
+
+```
+https://skillicons.dev/icons?i=all
+```
+
+This is useful for previewing the full icon set or building a catalog page. For large sets, pair `all` with the `perline` parameter to keep the grid readable.
+
+## Icon IDs
+
+Icon IDs are short, lowercase strings that map to a specific technology. A few common examples:
+
+| Technology | Icon ID |
+|---|---|
+| JavaScript | `js` |
+| TypeScript | `ts` |
+| React | `react` |
+| Node.js | `nodejs` |
+| Docker | `docker` |
+| Kubernetes | `kubernetes` |
+| Python | `py` |
+| Rust | `rust` |
+| HTML | `html` |
+| CSS | `css` |
+
+Icon IDs are **case-insensitive** — `JS`, `js`, and `Js` all resolve to the same JavaScript icon. Lowercase is the conventional style.
+
+## Embedding the URL
+
+Once you have your icon list, drop the URL into Markdown or HTML. The response is a self-contained SVG, so it works anywhere an image tag is valid.
+
+<CodeGroup>
+
+```md Markdown
+[![My Skills](https://skillicons.dev/icons?i=js,html,css,wasm)](https://skillicons.dev)
+```
+
+```html HTML
+<img src="https://skillicons.dev/icons?i=js,html,css,wasm" alt="My Skills" />
+```
+
+</CodeGroup>
+
+## Unrecognized Icon IDs
+
+If an icon ID isn't found in the catalog, it is **silently skipped** — the API won't return an error, and the remaining valid icons will still render. This means a typo like `javscript` instead of `javascript` will produce no visible error, just a missing icon.
+
+<Warning>
+  Always verify your icon IDs against the full catalog before publishing. Visit [/icons/list](/icons/list) to browse every valid icon ID. Unrecognized IDs are dropped without warning, which can leave your grid looking unexpectedly sparse.
+</Warning>
+
+## Large Icon Sets
+
+There is no hard-documented limit on the number of icon IDs you can pass in a single request, but very long comma-separated lists can produce grids that are difficult to read at default settings.
+
+When working with large sets — or when using `?i=all` — use the `perline` parameter to control how many icons appear on each row and keep the layout compact and legible. See the [Layout guide](/guides/layout) for details.
+
+## Full Icon Catalog
+
+For the complete list of every supported icon ID, visit the icon catalog reference:
+
+👉 [Browse the full icon catalog →](/icons/list)

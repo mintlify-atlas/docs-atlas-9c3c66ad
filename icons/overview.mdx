@@ -1,0 +1,65 @@
+---
+title: "Skill Icons — Icons Catalog Overview"
+sidebarTitle: "Overview"
+description: "Browse 200+ technology icons organized by category: languages, frameworks, databases, DevOps, editors, and cloud platforms."
+---
+
+Skill Icons supports **200+ icons** spanning every major technology category — from programming languages and frontend frameworks to databases, DevOps tooling, editors, and cloud platforms. Whether you're building a portfolio README, a project landing page, or technical documentation, there's an icon for nearly every tool in your stack.
+
+Each icon is referenced by a short, lowercase **icon ID** — for example, `js` for JavaScript, `react` for React, and `docker` for Docker. You pass one or more of these IDs to the `/icons` endpoint via the `?i=` query parameter to generate a dynamic SVG grid on the fly.
+
+## Categories
+
+The icons are organized into the following categories. Click any card to see representative IDs for that group, then head to the [complete list](/icons/list) for every supported ID.
+
+<CardGroup cols={2}>
+  <Card title="Languages" icon="code">
+    Core programming languages: `js`, `ts`, `py`, `rust`, `go`, `java`, `cs`, `cpp`, `ruby`, `swift`, `kotlin`, `php`, `r`, `scala`, `elixir`, `clojure`, `haskell`, and more.
+  </Card>
+
+  <Card title="Frontend Frameworks & Libraries" icon="browser">
+    UI libraries and meta-frameworks: `react`, `vue`, `angular`, `svelte`, `nextjs`, `nuxtjs`, `solidjs`, `ember`, `gatsby`, `alpinejs`, `htmx`, `lit`, and more.
+  </Card>
+
+  <Card title="Backend Frameworks" icon="server">
+    Server-side frameworks and runtimes: `nodejs`, `express`, `fastapi`, `django`, `flask`, `rails`, `spring`, `laravel`, `nestjs`, `ktor`, `actix`, and more.
+  </Card>
+
+  <Card title="Databases" icon="database">
+    SQL, NoSQL, and cloud-native stores: `postgres`, `mysql`, `mongodb`, `redis`, `sqlite`, `cassandra`, `elasticsearch`, `dynamodb`, `firebase`, `supabase`, `planetscale`, `prisma`, `sequelize`, and more.
+  </Card>
+
+  <Card title="DevOps & Cloud" icon="cloud">
+    Infrastructure, CI/CD, and observability: `docker`, `kubernetes`, `aws`, `gcp`, `azure`, `terraform`, `ansible`, `jenkins`, `githubactions`, `nginx`, `grafana`, `prometheus`, and more.
+  </Card>
+
+  <Card title="Editors & IDEs" icon="pencil">
+    Code editors and integrated development environments: `vscode`, `idea`, `vim`, `neovim`, `emacs`, `sublime`, `webstorm`, `phpstorm`, `pycharm`, `clion`, `rider`, `vscodium`, `visualstudio`, and more.
+  </Card>
+
+  <Card title="Design & Other Tools" icon="paintbrush">
+    Creative and design applications: `figma`, `xd`, `ps`, `ai`, `pr`, `blender`, `sketchup`, `ae`, and more.
+  </Card>
+
+  <Card title="Version Control & Collaboration" icon="git-branch">
+    Source control platforms and workflows: `git`, `github`, `gitlab`, `bitbucket`.
+  </Card>
+</CardGroup>
+
+## Example: Mixed-Category Stack
+
+Combine icon IDs from any category in a single request. The snippet below renders a badge for a full-stack TypeScript project:
+
+```md
+[![My Stack](https://skillicons.dev/icons?i=ts,react,nodejs,postgres,docker,aws)](https://skillicons.dev)
+```
+
+This produces a clickable SVG grid containing the TypeScript, React, Node.js, PostgreSQL, Docker, and AWS icons — ready to drop into any Markdown file, HTML page, or documentation site.
+
+## Complete Icon List
+
+The full catalog — including every supported ID sorted alphabetically with its category — is available at [**Icons List →**](/icons/list).
+
+<Note>
+  Don't see an icon for a tool you use? New icons are requested and tracked via **GitHub Issues** on the [skillicons-dev repository](https://github.com/tandpfun/skill-icons/issues). Open an issue with the tool name, its official logo, and a link to brand assets to propose an addition.
+</Note>

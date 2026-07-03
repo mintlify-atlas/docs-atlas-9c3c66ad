@@ -1,0 +1,72 @@
+---
+title: "Skill Icons: SVG Tech Icons for GitHub READMEs"
+sidebarTitle: "Introduction"
+description: "Skill Icons is a free Cloudflare Workers-powered API that generates SVG grids of 200+ technology icons for READMEs, resumes, and web apps."
+---
+
+Skill Icons turns a single URL into a polished SVG grid of technology icons — no account, no API key, no build step. Drop the URL into a GitHub README, a résumé, or any web page and your tech stack renders instantly, served at the edge by Cloudflare Workers.
+
+## How It Works
+
+Every request to `https://skillicons.dev` is handled by a Cloudflare Worker. The Worker reads the icon IDs you supply in the query string, retrieves the corresponding SVG assets, arranges them into a responsive grid, and streams the composed SVG back as the HTTP response. Because the response is a standard SVG image, it works anywhere an `<img>` tag or Markdown image syntax is accepted — no JavaScript required on the consuming side.
+
+## No Authentication Required
+
+Skill Icons is completely open. There are no API keys, rate-limit tiers, or sign-up flows. Embed it and it works.
+
+## API Surfaces
+
+Skill Icons exposes three public endpoints:
+
+| Endpoint | Returns | Primary Use |
+|---|---|---|
+| `GET /icons` | SVG image | Embed icon grids in READMEs and web pages |
+| `GET /api/icons` | JSON array of icon IDs | Discover all available icons programmatically |
+| `GET /api/svgs` | JSON object of raw SVG strings keyed by icon ID | Fetch raw SVG markup for custom rendering |
+
+### Query Parameters
+
+The `/icons` endpoint accepts the following parameters:
+
+| Parameter | Type | Default | Description |
+|---|---|---|---|
+| `i` | string | — | **Required.** Comma-separated list of icon IDs (e.g. `js,react,docker`) |
+| `theme` | `dark` \| `light` | `dark` | Color theme for the rendered icons |
+| `perline` | integer (1–50) | `15` | Number of icons to display per row |
+
+## Quick Examples
+
+Embed a dark-theme icon grid in a GitHub README using Markdown:
+
+```md
+![My Skills](https://skillicons.dev/icons?i=js,html,css,react)
+```
+
+Embed a light-theme grid in an HTML page:
+
+```html
+<img src="https://skillicons.dev/icons?i=python,django,postgres&theme=light" />
+```
+
+## Explore Further
+
+<CardGroup cols={2}>
+  <Card
+    title="Quickstart"
+    icon="rocket"
+    href="/quickstart"
+  >
+    Build and embed your first icon grid in under two minutes.
+  </Card>
+  <Card
+    title="API Reference"
+    icon="code"
+    href="/api/overview"
+  >
+    Full reference for all endpoints and query parameters.
+  </Card>
+</CardGroup>
+
+<Note>
+  Want to see a new icon added? Icon submissions are handled through **GitHub Issues**, not pull requests. Opening an issue lets the maintainers review and craft the icon to match the visual style and quality of the existing set. Head to the [Skill Icons GitHub repository](https://github.com/tandpfun/skill-icons) and open an issue to request an icon.
+</Note>
